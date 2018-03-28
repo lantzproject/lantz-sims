@@ -11,11 +11,11 @@ def read(filename):
     return codecs.open(filename, encoding='utf-8').read()
 
 
-#long_description = '\n\n'.join([read('README'),
-#                                read('AUTHORS'),
-#                                read('CHANGES')])
+long_description = '\n\n'.join([read('README'),
+                                read('AUTHORS'),
+                                read('CHANGES')])
 
-__doc__ = long_description = ""
+__doc__ = long_description
 
 root_folder = os.path.dirname(os.path.abspath(__file__))
 

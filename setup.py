@@ -36,7 +36,11 @@ setup(name='lantz_sims',
       packages=['lantz_sims'],
       zip_safe=False,
       platforms='any',
-      entry_points={},
+      entry_points={
+          'console_scripts': [
+              'lantz-sims = lantz_sims.__main__:main'
+          ]
+      },
       classifiers=[
            'Development Status :: 4 - Beta',
            'Intended Audience :: Developers',

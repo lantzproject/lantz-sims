@@ -5,7 +5,7 @@
 
     A simulated voltmeter.
 
-    :copyright: 2015 by The Lantz Authors
+    :copyright: 2018 by The Lantz Authors
     :license: BSD, see LICENSE for more details.
 """
 

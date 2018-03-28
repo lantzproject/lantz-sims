@@ -12,7 +12,8 @@
 import time
 import logging
 
-from .instrument import SimError, InstrumentHandler, main_tcp, main_serial, main_generic
+from .instrument import SimError, InstrumentHandler, main_generic, SIMULATORS
+
 
 class SimVoltmeter(InstrumentHandler):
 
@@ -65,8 +66,6 @@ def main(args=None):
 
     return main_generic(args, SimVoltmeter, (measure, measure))
 
-
-from . import SIMULATORS
 
 SIMULATORS['voltmeter'] = main
 

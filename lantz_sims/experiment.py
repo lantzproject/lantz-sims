@@ -16,6 +16,7 @@ import queue
 
 from . import fungen, voltmeter, instrument
 
+
 class StudiedObject(object):
     def __init__(self, read_from_actuator):
         self.read = read_from_actuator
@@ -39,6 +40,7 @@ class Namespace():
         self.host = host
         self.port = port
 
+
 def create_actuator_server(actuator):
     logging.info('Creating fungen server')
     args = Namespace('localhost', 5678)
@@ -50,6 +52,7 @@ def create_actuator_server(actuator):
         logging.info('Fungen: Ending')
     finally:
         actuator_server.shutdown()
+
 
 def create_sensor_server(sensor):
     logging.info('Creating voltmeter server')
@@ -63,6 +66,7 @@ def create_sensor_server(sensor):
     finally:
         sensor_server.shutdown()
 
+
 def serve_forever(obj):
     try:
         while activeCount() == 3:
@@ -70,6 +74,7 @@ def serve_forever(obj):
             sleep(0.1)
     except KeyboardInterrupt:
         logging.info('Experiment: Ending.')
+
 
 def main():
     fg = fungen.SimFunctionGenerator()
@@ -84,6 +89,7 @@ def main():
 
     sleep(1)
     serve_forever(obj)
+
 
 if __name__ == "__main__":
     main()

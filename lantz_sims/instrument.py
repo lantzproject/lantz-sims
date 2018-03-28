@@ -22,6 +22,10 @@ except ImportError:
         def __init__(self, *args, **kwargs):
             raise Exception('Please install PySerial to use the Serial Simulator.')
 
+#: Dict connecting simulator name with main callable.
+SIMULATORS = {}
+
+
 class SimError(Exception):
     pass
 
@@ -136,6 +140,7 @@ class InstrumentHandler(object):
         except Exception as e:
             logging.exception('Exception {}'.format(e))
             raise Exception
+
 
 def main_serial(instrument, args):
     return SerialServer(args.port, instrument)

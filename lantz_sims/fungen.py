@@ -14,9 +14,7 @@ import time
 import logging
 import math
 
-from . import SIMULATORS
-
-from .instrument import SimError, InstrumentHandler, main_tcp, main_serial, main_generic
+from .instrument import SimError, InstrumentHandler, main_generic, SIMULATORS
 
 
 class SimFunctionGenerator(InstrumentHandler):
@@ -86,6 +84,7 @@ def main(args=None):
 
 
 SIMULATORS['fungen'] = main
+
 
 if __name__ == "__main__":
     main()

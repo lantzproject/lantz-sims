@@ -28,17 +28,17 @@ setup(name='lantz_sims',
       author='Hernan E. Grecco',
       author_email='hernan.grecco@gmail.com',
       url='https://github.com/lantzproject',
-      install_requires=['lantz-core',
-                        'lantz-drivers',
-                        'lantz-qt'
+      install_requires=['lantz_core>=0.5.dev0',
                         ],
-
       packages=['lantz_sims'],
       zip_safe=False,
       platforms='any',
       entry_points={
           'console_scripts': [
               'lantz-sims = lantz_sims.__main__:main'
+          ],
+          'lantz_subcommands': [
+              'sims = lantz_sims.__main__:main'
           ]
       },
       classifiers=[

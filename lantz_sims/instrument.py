@@ -14,6 +14,8 @@ import logging
 import socket
 import socketserver
 
+from . import config
+
 try:
     from lantz.drivers.legacy.serial import SerialDriver
 except ImportError:
@@ -156,10 +158,21 @@ def main_tcp(instrument, args):
 
 def main_generic(args, instrument, instrument_args=(), instrument_kwargs=None):
     import argparse
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(add_help=False)
 
-    parser.add_argument('connection', choices=['serial', 'tcp'])
+    parser.add_argument('-h', '--help', action='store_true')
+    parser.add_argument('connection',
+                        choices=('serial', 'tcp'),
+                        nargs='?')
     args, pending = parser.parse_known_args(args)
+
+    if args.connection is None:
+        if args.help:
+            parser.print_help()
+        else:
+            parser.print_usage()
+
+        parser.exit(2)
 
     if args.connection == 'serial':
         subparser = argparse.ArgumentParser()
@@ -169,11 +182,14 @@ def main_generic(args, instrument, instrument_args=(), instrument_kwargs=None):
 
     else:
         subparser = argparse.ArgumentParser()
-        subparser.add_argument('-H', '--host', type=str, default='localhost',
-                               help='TCP hostname')
-        subparser.add_argument('-p', '--port', type=int, default=5678,
-                                help='TCP port')
+        subparser.add_argument('-H', '--host', type=str, default=config.TCP_HOST,
+                               help='TCP hostname (default %s)' % config.TCP_HOST)
+        subparser.add_argument('-p', '--port', type=int, default=config.TCP_PORT,
+                               help='TCP port (default %d)' % config.TCP_PORT)
         func = main_tcp
+
+    if args.help:
+        pending += ['--help', ]
 
     args2 = subparser.parse_args(pending)
 

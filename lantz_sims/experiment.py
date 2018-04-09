@@ -15,7 +15,7 @@ import logging
 import queue
 
 from . import fungen, voltmeter, instrument
-
+from .instrument import SIMULATORS
 
 class StudiedObject(object):
     def __init__(self, read_from_actuator):
@@ -76,7 +76,7 @@ def serve_forever(obj):
         logging.info('Experiment: Ending.')
 
 
-def main():
+def main(args=None):
     fg = fungen.SimFunctionGenerator()
     obj = StudiedObject(fg.generator_output)
     vm = voltmeter.SimVoltmeter(obj.present_value, fg.generator_output)
@@ -89,6 +89,9 @@ def main():
 
     sleep(1)
     serve_forever(obj)
+
+
+SIMULATORS['experiment'] = main
 
 
 if __name__ == "__main__":

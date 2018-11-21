@@ -20,7 +20,7 @@ __doc__ = long_description
 root_folder = os.path.dirname(os.path.abspath(__file__))
 
 setup(name='lantz-sims',
-      version='0.5.dev0',
+      version='0.5.dev1',
       license='BSD',
       description='Instrumentation framework',
       long_description=long_description,
@@ -28,7 +28,7 @@ setup(name='lantz-sims',
       author='Hernan E. Grecco',
       author_email='hernan.grecco@gmail.com',
       url='https://github.com/lantzproject',
-      install_requires=['lantz-core>=0.5.dev0',
+      install_requires=['lantz-core>=0.5.dev1',
                         ],
       packages=['lantz.sims'],
       zip_safe=False,

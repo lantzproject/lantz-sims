@@ -11,6 +11,7 @@
 
 
 from . import fungen, experiment, voltmeter
+from .generic import wrap_driver_cls
 
 
 

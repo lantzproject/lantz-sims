@@ -20,7 +20,7 @@ __doc__ = long_description
 root_folder = os.path.dirname(os.path.abspath(__file__))
 
 setup(name='lantz-sims',
-      version='0.5',
+      version='0.5.1.dev0',
       license='BSD',
       description='Instrumentation framework',
       long_description=long_description,
